@@ -1,31 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using LootInjection.Business.Models.Enums;
 
 namespace LootInjection.Business.Models
 {
     public class Cliente : Entity
     {
-        public string Nome { get; private set; }
-        public DateTime DataNascimento { get; private set; }
-        public int Telefone { get; private set; }
-        public OpcaoSexual OpcaoSexual { get; private set; }
-        public Nacionalidade Nacionalidade { get; private set; }
-        public string Email { get; private set; }
-        public string Cpf { get; private set; }
-        public Endereco Endereco { get; private set; }
+        public string Nome { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public int Telefone { get; set; }
+        public OpcaoSexual OpcaoSexual { get; set; }
+        public Nacionalidade Nacionalidade { get; set; }
+        public string Email { get; set; }
+        public string Cpf { get; set; }
+        public Endereco Endereco { get; set; }
 
         public IEnumerable<Conta> Contas { get; set; }
-
-        public Cliente(string nome, DateTime dataNascimento, int telefone, OpcaoSexual opcaoSexual, Nacionalidade nacionalidade, string email, string cpf, Endereco endereco)
-        {
-            Nome = nome;
-            DataNascimento = dataNascimento;
-            Telefone = telefone;
-            OpcaoSexual = opcaoSexual;
-            Nacionalidade = nacionalidade;
-            Email = email;
-            Cpf = cpf;
-            Endereco = endereco;
-        }
     }
 }

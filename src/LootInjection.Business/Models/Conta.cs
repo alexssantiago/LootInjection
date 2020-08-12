@@ -1,23 +1,16 @@
 ﻿using System;
+using LootInjection.Business.Models.Enums;
 
 namespace LootInjection.Business.Models
 {
-    public class Conta
+    public class Conta : Entity
     {
-        public Guid ClienteId { get; private set; }
-        public TipoConta Tipo { get; private set; }
-        public string Descricao { get; private set; }
-        public decimal Saldo { get; private set; }
+        public Guid ClienteId { get; set; }
+        public TipoConta Tipo { get; set; }
+        public string Descricao { get; set; }
+        public decimal Saldo { get; set; }
 
         // EF Relation
-        public Cliente Cliente { get; private set; }
-
-        public Conta(Guid clienteId, TipoConta tipo, string descricao, decimal saldo)
-        {
-            ClienteId = clienteId;
-            Tipo = tipo;
-            Descricao = descricao;
-            Saldo = saldo;
-        }
+        public Cliente Cliente { get; set; }
     }
 }

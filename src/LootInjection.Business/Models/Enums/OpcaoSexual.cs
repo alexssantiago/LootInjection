@@ -1,4 +1,4 @@
-﻿namespace LootInjection.Business.Models
+﻿namespace LootInjection.Business.Models.Enums
 {
     public enum OpcaoSexual
     {
