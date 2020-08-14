@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using LootInjection.Business.Models;
 
-namespace LootInjection.Business.Interfaces
+namespace LootInjection.Business.Interfaces.Repository
 {
     public interface ICategoriaRepository : IRepository<Categoria>
     {

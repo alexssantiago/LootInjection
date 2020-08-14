@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using LootInjection.Business.Interfaces.Repository;
 
 namespace LootInjection.Data.Repository
 {

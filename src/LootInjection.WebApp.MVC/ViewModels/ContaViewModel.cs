@@ -1,8 +1,8 @@
 ﻿using LootInjection.Business.Models.Enums;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
 
 namespace LootInjection.WebApp.MVC.ViewModels
 {
@@ -19,6 +19,7 @@ namespace LootInjection.WebApp.MVC.ViewModels
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(100, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [DisplayName("Descrição")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

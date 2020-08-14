@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LootInjection.Business.Models;
 
-namespace LootInjection.Business.Interfaces
+namespace LootInjection.Business.Interfaces.Repository
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : Entity
     {

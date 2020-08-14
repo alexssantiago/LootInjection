@@ -17,9 +17,10 @@ namespace LootInjection.WebApp.MVC.ViewModels
 
         [DisplayName("Data de Nascimento")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
 
-        public int Telefone { get; set; }
+        public long Telefone { get; set; }
 
         [DisplayName("Opção Sexual")]
         public OpcaoSexual OpcaoSexual { get; set; }
@@ -30,7 +31,7 @@ namespace LootInjection.WebApp.MVC.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public string Cpf { get; set; }
+        public long Cpf { get; set; }
         
         public EnderecoViewModel Endereco { get; set; }
 

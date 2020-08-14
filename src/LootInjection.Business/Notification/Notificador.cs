@@ -9,9 +9,9 @@ namespace LootInjection.Business.Notification
         private List<Notificacao> _notificacoes;
         public IReadOnlyCollection<Notificacao> Notificacoes => _notificacoes;
 
-        public Notificador(List<Notificacao> notificacoes)
+        public Notificador()
         {
-            _notificacoes = notificacoes;
+            _notificacoes = new List<Notificacao>();
         }
 
         public bool PossuiNotificacoes() => _notificacoes.Any();

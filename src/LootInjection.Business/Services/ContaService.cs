@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using LootInjection.Business.Interfaces;
-using LootInjection.Business.Interfaces.Notification;
+﻿using LootInjection.Business.Interfaces.Notification;
+using LootInjection.Business.Interfaces.Repository;
 using LootInjection.Business.Interfaces.Service;
 using LootInjection.Business.Models;
 using LootInjection.Business.Models.Validations;
+using System;
+using System.Threading.Tasks;
 
 namespace LootInjection.Business.Services
 {

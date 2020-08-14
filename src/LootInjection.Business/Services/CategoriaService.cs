@@ -4,6 +4,7 @@ using LootInjection.Business.Interfaces.Service;
 using LootInjection.Business.Models;
 using System;
 using System.Threading.Tasks;
+using LootInjection.Business.Interfaces.Repository;
 using LootInjection.Business.Models.Validations;
 
 namespace LootInjection.Business.Services

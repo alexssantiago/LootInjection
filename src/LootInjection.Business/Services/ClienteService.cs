@@ -1,11 +1,11 @@
-﻿using LootInjection.Business.Interfaces.Service;
+﻿using LootInjection.Business.Interfaces.Notification;
+using LootInjection.Business.Interfaces.Repository;
+using LootInjection.Business.Interfaces.Service;
 using LootInjection.Business.Models;
+using LootInjection.Business.Models.Validations;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using LootInjection.Business.Interfaces;
-using LootInjection.Business.Interfaces.Notification;
-using LootInjection.Business.Models.Validations;
 
 namespace LootInjection.Business.Services
 {
@@ -44,6 +44,8 @@ namespace LootInjection.Business.Services
                 Notificar("Já existe um cliente cadastrado com esse CPF.");
                 return;
             }
+
+            await AtualizarEndereco(cliente.Endereco);
 
             await _clienteRepository.Atualizar(cliente);
         }

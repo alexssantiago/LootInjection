@@ -18,8 +18,15 @@ namespace LootInjection.Data.Mappings
                 .IsRequired()
                 .HasColumnType("date");
 
-            builder.Property(c => c.Telefone)
+            builder.Property(c => c.OpcaoSexual)
+                .IsRequired()
                 .HasColumnType("int");
+
+            builder.Property(c => c.Nacionalidade)
+                .HasColumnType("int");
+
+            builder.Property(c => c.Telefone)
+                .HasColumnType("bigint");
 
             builder.Property(c => c.Email)
                 .IsRequired()
@@ -27,7 +34,7 @@ namespace LootInjection.Data.Mappings
 
             builder.Property(c => c.Cpf)
                 .IsRequired()
-                .HasColumnType("varchar(11)");
+                .HasColumnType("bigint");
 
             // 1 : 1 => Cliente : Endereco
             builder.HasOne(c => c.Endereco)
