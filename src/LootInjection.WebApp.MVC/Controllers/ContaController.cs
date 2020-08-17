@@ -70,9 +70,41 @@ namespace LootInjection.WebApp.MVC.Controllers
             return PartialView("_ListaContas", contasViewModel);
         }
 
+        [Route("excluir-conta/{id:guid}")]
+        public async Task<IActionResult> Excluir(Guid id)
+        {
+            var contaViewModel = await ObterConta(id);
+
+            if (contaViewModel == null) return NotFound();
+
+            return View(contaViewModel);
+        }
+
+        [HttpPost, ActionName("Excluir")]
+        [Route("excluir-conta/{id:guid}")]
+        public async Task<IActionResult> ExcluirConfirmado(Guid id)
+        {
+            var contaViewModel = await ObterConta(id);
+
+            if (contaViewModel == null) return NotFound();
+
+            await _contaService.Remover(id);
+
+            if (!OperacaoValida) return View(contaViewModel);
+
+            TempData["Sucesso"] = "Conta excluída com sucesso!";
+
+            return RedirectToAction("Index", new { clienteId = contaViewModel.ClienteId });
+        }
+        
         private async Task<IEnumerable<ContaViewModel>> ObterContasPorCliente(Guid id)
         {
             return _mapper.Map<IEnumerable<ContaViewModel>>(await _contaRepository.ObterContasPorCliente(id));
+        }
+
+        private async Task<ContaViewModel> ObterConta(Guid id)
+        {
+            return _mapper.Map<ContaViewModel>(await _contaRepository.ObterPorId(id));
         }
     }
 }

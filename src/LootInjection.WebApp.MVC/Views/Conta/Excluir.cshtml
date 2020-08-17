@@ -1,0 +1,29 @@
+﻿@model LootInjection.WebApp.MVC.ViewModels.ContaViewModel
+
+@{
+    ViewData["Title"] = "Excluir Conta";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<vc:Summary></vc:Summary>
+
+<div>
+    <h4>Esta ação será permanente!</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayFor(model => model.Tipo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+    </dl>
+
+    <form asp-action="Excluir">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" />
+        <a class="btn btn-primary" asp-action="Index" asp-route-clienteId="@Model.ClienteId">Voltar</a>
+    </form>
+    
+</div>
