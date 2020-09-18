@@ -24,7 +24,7 @@ namespace LootInjection.Business.Services
 
         public async Task Adicionar(Cliente cliente)
         {
-            if(!ExecutarValidacao(new ClienteValidation(), cliente) || !!ExecutarValidacao(new EnderecoValidation(), cliente.Endereco)) return;
+            if(!ExecutarValidacao(new ClienteValidation(), cliente) || !ExecutarValidacao(new EnderecoValidation(), cliente.Endereco)) return;
 
             if (_clienteRepository.Buscar(c => c.Cpf == cliente.Cpf).Result.Any())
             {

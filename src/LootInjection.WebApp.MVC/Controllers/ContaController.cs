@@ -38,28 +38,6 @@ namespace LootInjection.WebApp.MVC.Controllers
             return View(contasViewModel);
         }
 
-        [Route("cadastro-conta/{clienteId:guid}")]
-        public IActionResult Cadastrar(Guid clienteId)
-        {
-            return PartialView("_CadastroConta", new ContaViewModel() { ClienteId = clienteId });
-        }
-
-        [HttpPost]
-        [Route("cadastro-conta/{clienteId:guid}")]
-        public async Task<IActionResult> Cadastrar(ContaViewModel contaViewModel)
-        {
-            if (!ModelState.IsValid) return PartialView("_CadastroConta", contaViewModel);
-
-            await _contaService.Adicionar(_mapper.Map<Conta>(contaViewModel));
-
-            if (!OperacaoValida) return PartialView("_CadastroConta", contaViewModel);
-
-            TempData["Sucesso"] = "Conta cadastrada com sucesso!";
-
-            var url = Url.Action("ObterContas", "Conta", new { clienteId = contaViewModel.ClienteId });
-            return Json(new { success = true, url });
-        }
-
         [Route("obter-contas/{clienteId:guid}")]
         public async Task<IActionResult> ObterContas(Guid clienteId)
         {
@@ -68,6 +46,54 @@ namespace LootInjection.WebApp.MVC.Controllers
             if (contasViewModel == null) return NotFound();
 
             return PartialView("_ListaContas", contasViewModel);
+        }
+
+        [Route("cadastro-conta/{clienteId:guid}")]
+        public IActionResult Cadastrar(Guid clienteId)
+        {
+            return PartialView("_Cadastro", new ContaViewModel() { ClienteId = clienteId });
+        }
+
+        [HttpPost]
+        [Route("cadastro-conta/{clienteId:guid}")]
+        public async Task<IActionResult> Cadastrar(ContaViewModel contaViewModel)
+        {
+            if (!ModelState.IsValid) return PartialView("_Cadastro", contaViewModel);
+
+            await _contaService.Adicionar(_mapper.Map<Conta>(contaViewModel));
+
+            if (!OperacaoValida) return PartialView("_Cadastro", contaViewModel);
+
+            TempData["Sucesso"] = "Conta cadastrada com sucesso!";
+
+            var url = Url.Action("ObterContas", "Conta", new { clienteId = contaViewModel.ClienteId });
+            return Json(new { success = true, url });
+        }
+
+        [Route("atualizar-conta/{id:guid}")]
+        public async Task<IActionResult> Atualizar(Guid id)
+        {
+            var contaViewModel = await ObterConta(id);
+
+            if (contaViewModel == null) return NotFound();
+
+            return PartialView("_Edicao", contaViewModel);
+        }
+
+        [HttpPost]
+        [Route("atualizar-conta/{id:guid}")]
+        public async Task<IActionResult> Atualizar(ContaViewModel contaViewModel)
+        {
+            if (!ModelState.IsValid) return PartialView("_Edicao", contaViewModel);
+
+            await _contaService.Atualizar(_mapper.Map<Conta>(contaViewModel));
+
+            if (!OperacaoValida) return PartialView("_Edicao", contaViewModel);
+
+            TempData["Sucesso"] = "Conta atualizada com sucesso!";
+
+            var url = Url.Action("ObterContas", "Conta", new { clienteId = contaViewModel.ClienteId });
+            return Json(new { success = true, url });
         }
 
         [Route("excluir-conta/{id:guid}")]

@@ -35,8 +35,8 @@
                     @Html.DisplayFor(modelItem => item.Saldo)
                 </td>
                 <td>
-                    <a class="btn btn-warning" asp-action="Atualizar" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt"></spam></a>
-                    <a class="btn btn-danger" asp-action="Excluir" asp-route-id="@item.Id"><spam class="fa fa-trash"></spam></a>
+                    <a class="btn btn-warning" asp-action="Atualizar" asp-route-id="@item.Id" data-modal="" title="Atualizar Conta"><spam class="fa fa-pencil-alt"></spam></a>
+                    <a class="btn btn-danger" asp-action="Excluir" asp-route-id="@item.Id" title="Excluir Conta"><spam class="fa fa-trash"></spam></a>
                 </td>
             </tr>
         }
